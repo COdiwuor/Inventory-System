@@ -1,11 +1,13 @@
 <?php
   $page_title = 'Add Sale';
   require_once('includes/load.php');
+  //require_once('includes/database.php');
   // Checkin What level user has permission to view this page
+   //page_require_level(1);
    page_require_level(3);
 ?>
 <?php
-
+ 
   if(isset($_POST['add_sale'])){
     $req_fields = array('s_id','quantity','price','total', 'date' );
     validate_fields($req_fields);
@@ -37,7 +39,8 @@
   }
 
 ?>
-<?php include_once('layouts/header.php'); ?>
+<?php include_once('layouts/header.php'); echo"something"; ?>
+
 <div class="row">
   <div class="col-md-6">
     <?php echo display_msg($msg); ?>
@@ -61,7 +64,7 @@
       <div class="panel-heading clearfix">
         <strong>
           <span class="glyphicon glyphicon-th"></span>
-          <span>Sale Eidt</span>
+          <span>Sale Edit</span>
        </strong>
       </div>
       <div class="panel-body">

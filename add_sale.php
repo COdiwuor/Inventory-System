@@ -3,13 +3,13 @@
   require_once('includes/load.php');
   //require_once('includes/database.php');
   // Checkin What level user has permission to view this page
-   //page_require_level(1);
    page_require_level(3);
 ?>
 <?php
  
   if(isset($_POST['add_sale'])){
-    $req_fields = array('s_id','quantity','price','total', 'date' );
+    // $req_fields = array('s_id','quantity','price','total', 'date' );
+     $req_fields = array('quantity','price','total', 'date' );
     validate_fields($req_fields);
         if(empty($errors)){
           $p_id      = $db->escape((int)$_POST['s_id']);
@@ -37,53 +37,52 @@
            redirect('add_sale.php',false);
         }
   }
-
 ?>
-<?php include_once('layouts/header.php'); echo"something"; ?>
+<?php include_once('layouts/header.php');  ?>
 
 <div class="row">
-  <div class="col-md-6">
-    <?php echo display_msg($msg); ?>
-    <form method="post" action="ajax.php" autocomplete="off" id="sug-form">
-        <div class="form-group">
-          <div class="input-group">
-            <span class="input-group-btn">
-              <button type="submit" class="btn btn-primary">Find It</button>
-            </span>
-            <input type="text" id="sug_input" class="form-control" name="title"  placeholder="Search for product name">
-         </div>
-         <div id="result" class="list-group"></div>
+  <div class="col-md-5">
+    <div class = "panel panel-default">
+      <?php echo display_msg($msg); ?>
+    
+          
+        <div class="panel-heading">
+          <strong>
+            <span class="glyphicon glyphicon-th"></span>
+            <span>Add New Sales</span>
+         </strong>
         </div>
-    </form>
-  </div>
-</div>
-<div class="row">
 
-  <div class="col-md-12">
-    <div class="panel panel-default">
-      <div class="panel-heading clearfix">
-        <strong>
-          <span class="glyphicon glyphicon-th"></span>
-          <span>Sales</span>
-       </strong>
-      </div>
-      <div class="panel-body">
-        <form method="post" action="add_sale.php">
-         <table class="table table-bordered">
-           <thead>
-            <th> Item </th>
-            <th> Price </th>
-            <th> Qty </th>
-            <th> Total </th>
-            <th> Date</th>
-            <th> Action</th>
-           </thead>
-             <tbody  id="product_info"> </tbody>
-         </table>
-       </form>
+        
+        <div class="form-group">
+        <form method="post" action="add_sale.php" class= "clearfix">
+
+
+        <input type="text"  id="sug_product" class="form-control" name="product_name"  placeholder=" Product Name">
+        <break>
+        <input type="number" min="0" id="sug_quantity" class="form-control" name="quantity"  placeholder=" Product Quantity">
+        <break>
+        <input type="number" min="0" id="sug_input" class="form-control" name="total"  placeholder="Total">
+        <break>
+        <input type="date" id="sug_input" class="form-control" name="date"  placeholder=" ">
+          <div class="input-group">
+            <br/>
+            &nbsp;
+            <button type="submit" class="btn btn-primary" name="add_sale">Save</button>
+            
+            <!-- <span class="input-group-btn">
+              <button type="submit" class="btn btn-primary" name="add_sale">Save</button>
+            </span> -->
+           <!-- <input type="text" id="sug_input" class="form-control" name="title"  placeholder="Search for product name"> -->
+        </div>
+          <div id="result" class="list-group"></div>
+          </div>
+        </form>
       </div>
     </div>
   </div>
+<div class="row">
+
 
 </div>
 

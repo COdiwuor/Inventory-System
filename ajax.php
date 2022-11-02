@@ -4,7 +4,7 @@
 ?>
 
 <?php
- // Auto suggetion
+ // Auto suggestion
     $html = '';
    if(isset($_POST['product_name']) && strlen($_POST['product_name']))
    {
